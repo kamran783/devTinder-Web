@@ -1,16 +1,19 @@
 import { useState } from "react";
 import axios from "axios";
-import {useDispatch} from "react-redux"
-import {addUser} from "../utils/userSlice"
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+import { BASE_URL } from "../utils/constants";
+import {useNavigate} from "react-router-dom"
 const Login = () => {
   const [email, setEmail] = useState("Rohit@gmail.com");
   const [password, setpassword] = useState("Rohit@123");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleclick = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:1234/login",
+        BASE_URL + "/login",
         {
           email,
           password,
@@ -19,13 +22,13 @@ const Login = () => {
           withCredentials: true,
         },
       );
-      console.log(response.data)
-      dispatch(addUser(response.data))
+      dispatch(addUser(response.data));
+      return navigate("/")
     } catch (err) {
       console.error(err);
     }
   };
-  
+
   return (
     <div>
       <div className="card bg-base-100 w-96 shadow-sm mt-8 mx-auto ">
