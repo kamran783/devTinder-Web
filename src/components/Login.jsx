@@ -3,10 +3,10 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { BASE_URL } from "../utils/constants";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 const Login = () => {
-  const [email, setEmail] = useState("Rohit@gmail.com");
-  const [password, setpassword] = useState("Rohit@123");
+  const [email, setEmail] = useState("Kamran@gmail.com");
+  const [password, setpassword] = useState("Kamran@123");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -23,9 +23,9 @@ const Login = () => {
         },
       );
       dispatch(addUser(response.data));
-      return navigate("/")
+      return navigate("/");
     } catch (err) {
-      console.error(err);
+      console.log(err)
     }
   };
 
