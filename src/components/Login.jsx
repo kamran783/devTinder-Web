@@ -12,6 +12,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleclick = async () => {
+    setError("");
     try {
       const response = await axios.post(
         BASE_URL + "/login",

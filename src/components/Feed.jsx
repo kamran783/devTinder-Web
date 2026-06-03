@@ -10,11 +10,13 @@ const Feed = () => {
   const feedItems = useSelector((item) => item.feed);
   const fetchfeed = async () => {
     if (feedItems) return;
-    let res = await axios.get(BASE_URL + "/user/feed", {
+    try{let res = await axios.get(BASE_URL + "/user/feed", {
       withCredentials: true,
     });
     dispatch(addFeed(res.data));
-    console.log(res.data);
+    console.log(res.data);}catch(err){
+      console.log(err)
+    }
   };
 
   useEffect(() => {

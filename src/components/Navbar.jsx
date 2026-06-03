@@ -4,6 +4,7 @@ import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { removeUser } from "../utils/userSlice";
+import { removeFeed } from "../utils/feedSlice";
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -12,12 +13,14 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await axios.post(BASE_URL + "/logout", {}, { withCredentials: true });
+      dispatch(removeFeed());
       dispatch(removeUser());
       navigate("/login");
     } catch (err) {
       console.error(err.response?.data || err.message);
     }
   };
+  
   return (
     <div className="navbar bg-base-300 shadow-sm">
       <div className="flex-1">
