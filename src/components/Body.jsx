@@ -19,6 +19,7 @@ const Body = () => {
       const res = await axios.get(BASE_URL + "/profile/view", {
         withCredentials: true,
       });
+      console.log(res);
       dispatch(addUser(res.data));
     } catch (err) {
       if (err.response?.status === 401) {
@@ -31,9 +32,13 @@ const Body = () => {
     fetchUser();
   }, []);
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <Outlet />
+
+      <div className="flex-1">
+        <Outlet />
+      </div>
+
       <Footer />
     </div>
   );

@@ -1,26 +1,30 @@
-const UserCard = ({user}) => {
-    const{firstName, lastName,Image}=user
-    
+const UserCard = ({ user }) => {
+  console.log(user)
+  const { firstName, lastName, Image, age, gender, about } = user;
   return (
-    <div className="card bg-base-100 w-96 shadow-sm mx-auto my-4">
+    <div className="card bg-base-100 w-96 shadow-md my-2">
       <figure>
-        <img
-          src={Image}
-          alt="Shoes"
-        />
+        <img src={Image} alt="userphoto" />
       </figure>
+
       <div className="card-body">
-        <h2 className="card-title">{firstName + " "}{lastName}</h2>
-        <p>
-          A card component has a figure, a body part, and inside body there are
-          title and actions parts
-        </p>
+        <h2 className="card-title">
+          {firstName} {lastName}
+        </h2>
+        <div className="flex">
+          {age && <p>Age : {age}</p>}
+          {gender && <p> Gender : {gender}</p>}
+        </div>
+
+        {about && <p>{about || "No data available"} </p>}
+
         <div className="card-actions justify-end">
           <button className="btn btn-primary">Ignore</button>
-          <button className="btn btn-secondary">Intrested</button>
+          <button className="btn btn-secondary">Interested</button>
         </div>
       </div>
     </div>
   );
 };
+
 export default UserCard;
