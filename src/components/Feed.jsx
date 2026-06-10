@@ -30,8 +30,7 @@ const Feed = () => {
 
   return (
     <div className="flex flex-col items-center my-2">
-      {feedItems &&
-        feedItems.map((item, index) => <UserCard key={index} user={item} />)}
+      {feedItems && <UserCard user={feedItems[0]} />}
     </div>
   );
 };

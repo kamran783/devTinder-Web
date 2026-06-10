@@ -34,7 +34,7 @@ const Connections = () => {
               connection;
             return (
               <div
-                className="my-2  p-4 flex shadow-md rounded-lg overflow-hidden"
+                className="my-2  p-4 flex shadow-lg rounded-lg overflow-hidden"
                 key={_id}
               >
                 <div className="w-1/3 flex-shrink-0">

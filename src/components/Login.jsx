@@ -49,7 +49,7 @@ const Login = () => {
             <fieldset className="fieldset">
               <legend className="fieldset-legend">Enter Password</legend>
               <input
-                type="text"
+                type="password"
                 className="input"
                 value={password}
                 onChange={(e) => setpassword(e.target.value)}
