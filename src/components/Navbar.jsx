@@ -4,23 +4,23 @@ import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { removeUser } from "../utils/userSlice";
-import { removeFeed } from "../utils/feedSlice";
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  const connections = useSelector((con) => con.Requests);
+  console.log(connections.length);
 
   const handleLogout = async () => {
     try {
       await axios.post(BASE_URL + "/logout", {}, { withCredentials: true });
-      dispatch(removeFeed());
       dispatch(removeUser());
       navigate("/login");
     } catch (err) {
       console.error(err.response?.data || err.message);
     }
   };
-  
+
   return (
     <div className="navbar bg-base-300 shadow-sm">
       <div className="flex-1">
@@ -59,7 +59,7 @@ const Navbar = () => {
                 <Link to="/connections">connections</Link>
               </li>
               <li>
-                <Link to="/requests">Requests</Link>
+                <Link to="/requests">Requests {connections.length > 0 && `(${connections.length})`}</Link >
               </li>
               <li>
                 <a onClick={handleLogout}>Logout</a>

@@ -5,6 +5,7 @@ import { addReqConnection, removeRequest } from "../utils/requestsSlice";
 import axios from "axios";
 const ConnectionRequest = () => {
   const connections = useSelector((con) => con.Requests);
+  console.log(connections.length)
   const dispatch = useDispatch();
 
   const requests = async () => {
