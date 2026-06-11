@@ -9,7 +9,6 @@ const Navbar = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const connections = useSelector((con) => con.Requests);
-  console.log(connections.length);
 
   const handleLogout = async () => {
     try {
